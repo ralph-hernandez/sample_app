@@ -47,6 +47,7 @@ gem 'faker', '1.4.3'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'jquery-rails', '3.1.2'
+gem 'turbolinks'
 
 group :development, :test do
   gem 'sqlite3', '1.3.10'
