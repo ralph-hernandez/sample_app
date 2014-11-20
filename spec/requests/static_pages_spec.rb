@@ -15,40 +15,80 @@ require 'rails_helper'
 
 describe "Static pages" do
 
-	describe "Home page" do
-		
-		it "should have the content 'Sample App'" do
-			visit '/static_pages/home'
-			page.should have_selector('h1', :text => 'Sample App')
-		end
+	subject { page }
 
-		it "should have the right title" do
-			visit '/static_pages/home'
-			page.should have_selector('title', :text => "Ruby on Rails | Home")
-		end
+	describe "Home page" do
+		before {visit root_path}
+
+		it { should have_selector "h1", text: "Sample App"}
+
+		it { should have_selector "title", text: full_title('Home')}
+
+		# it "should have the content 'Sample App'" do
+		# 	page.should have_selector('h1', text: 'Sample App')
+		# end
+
+		# it "should have the right title home" do
+		# 	page.should have_selector('title', text: "Ruby on Rails | Home")
+		# end
 	end
 
 	describe "Help page" do
+		before {visit help_path}
+
+		it { should have_selector('title', text: full_title('Help')) }
 		it "should have the content 'Help'" do
-			visit '/static_pages/help'
-			page.should have_selector('h1', :text => 'Help')
+			page.should have_selector('h1', text: 'Help')
 		end
 
-		it "should have the right title" do
-			visit '/static_pages/help'
-			page.should have_selector('title', :text => "Rails | Help")
-		end
+		# it "should have the right title help" do
+		# 	page.should have_selector(:title, text: "Help")
+		# end
 	end
 
 	describe "About page" do	
+		before {visit about_path}
+
 		it "should have the content 'About Us'" do
-			visit '/static_pages/about'
-			page.should have_selector('h1', :text => 'About Us')
+			page.should have_selector('h1', text: 'About Us')
 		end
 
-		it "should have the right title" do
-			visit '/static_pages/about'
-			page.should have_selector('title', :text => "Rails | About Us")
+		it "should have the right title about" do
+			page.should have_selector('title', text: "Ruby on Rails | About Us")
 		end
 	end
 end
+
+
+# # save as static_pages_controller_test.rb
+# require 'test_helper'
+
+# class StaticPagesControllerTest < ActionController::TestCase
+
+#   test "should get home" do
+#     get :home
+#     assert_response :success
+#     assert_select "title", "Ruby on Rails | Home"
+#   end
+
+#   test "should get help" do
+#     get :help
+#     assert_response :success
+#     assert_select "title", "Help | Ruby on Rails Tutorial Sample App"
+#   end
+
+#   test "should get about" do
+#     get :about
+#     assert_response :success
+#     assert_select "title", "About | Ruby on Rails Tutorial Sample App"
+#   end
+
+#   test "should get contact" do
+#     get :contact
+#     assert_response :success
+#     assert_select "title", "Contact | Ruby on Rails Tutorial Sample App"
+#   end
+# end
+
+
+
